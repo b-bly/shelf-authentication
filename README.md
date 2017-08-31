@@ -3,7 +3,7 @@
 Setup Directions
 -----------
 * Run `npm install`,
-* Start mongo if not running already by using `mongod`
+* Start mongo if not running already by using `mongod` or brew services.
 * Run `npm start` in an open tab of terminal
 
 ![our shelf](tauShelf.png)
