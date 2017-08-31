@@ -3,4 +3,20 @@
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+    <div  class="container" ng-controller="ShelfController as sc">
+            <!-- {{sc.itemData.list}} -->
+            <table class="table-hover table">
+                <thead>
+                    <th>Placer</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in sc.itemData.list">
+                        <td>{{data.placer}}</td>
+                        <td>{{data.description}}</td>
+                        <td><img ng-src="{{data.image_url}}" width="200px"></td>
+                    </tr>
+                </tbody>
+        </div>    
 </div>
