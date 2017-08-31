@@ -11,7 +11,7 @@ var session = require('express-session');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
-
+var shelf = require('./routes/shelf');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -35,6 +35,7 @@ app.use(passport.session());
 /** Routes **/
 app.use('/register', register);
 app.use('/user', user);
+app.use('/shelf', shelf);
 
 // handles redirect from passport login failure
 app.use('/loginFailure', function(req, res) {
