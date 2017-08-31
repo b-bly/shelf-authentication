@@ -72,3 +72,7 @@ li a:hover {
     text-decoration: underline;
     color: #eee;
 }
+
+.shelfTable {
+    margin-top: 20px;
+}
