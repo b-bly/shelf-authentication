@@ -1,4 +1,4 @@
-myApp.controller('InfoController', ['$http', 'UserService', function($http, UserService) {
+myApp.controller('InfoController', ['$http', 'UserService', '$location', function($http, UserService, $location) {
   console.log('InfoController created');
   var vm = this;
   vm.userService = UserService;
@@ -8,6 +8,8 @@ myApp.controller('InfoController', ['$http', 'UserService', function($http, User
     console.log('addItem', vm.newItem);
     $http.post('/shelf', vm.newItem).then(function(response){
       console.log('post response', response);
+
+      $location.path('/user');
 
     });
   };
