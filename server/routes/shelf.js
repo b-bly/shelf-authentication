@@ -43,15 +43,44 @@ router.get('/', function (req, res) {
     });
 });
 
-router.delete('/:id', function (req, res){
-    Item.findByIdAndRemove({_id: req.params.id}, function(err){
-        if (err) {
-            console.log('delete error', err);
-            res.sendStatus(500);
-        } else {
-            res.sendStatus(200);
-        };
-    });
+router.delete('/:id', function (req, res) {
+
+    if (req.isAuthenticated()) { // is the user logged in?
+
+        var itemToDelete = {};
+
+        console.log('req.params.id', req.params.id);
+        
+
+        Item.findById(req.params.id, function(err, data){
+            if (err){
+                console.log('delete find error:', err);
+                res.sendStatus(500);
+            } else {
+                console.log('no result');
+                console.log('data:', data);
+                
+                itemToDelete = data;
+            } 
+            console.log('Current user:', req.user.username);
+            console.log('User who placed item:',itemToDelete.placer);
+            
+            if (req.user.username === itemToDelete.placer){ // is the user the same one who added it?
+                Item.findByIdAndRemove({ _id: req.params.id }, function (err) {
+                    if (err) {
+                        console.log('delete error', err);
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(200);
+                    };
+                });
+            } else {
+                res.sendStatus(500);
+            }
+        });
+        
+        
+    }
 });
 
 
