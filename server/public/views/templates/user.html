@@ -23,8 +23,8 @@
                     </tr>
                 </tbody> -->
 
-            <div class="row">
-                <div class="col-sm-3 itemDiv well" ng-repeat="data in sc.itemData.list" style="height: 400px">
+            <div class="container">
+                <div class="col-sm-4 col-md-3 itemDiv well col-xs-6" ng-repeat="data in sc.itemData.list" style="height: 400px">
                         <img ng-src="{{data.image_url}}" style="max-height:240px; max-width:200px">
                         <p class="lead">{{data.description}}</p>
                         <p>from: {{data.placer}}</p>

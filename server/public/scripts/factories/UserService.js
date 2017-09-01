@@ -3,10 +3,12 @@ myApp.factory('UserService', function ($http, $location) {
 
   var userObject = {};
   var itemData = {list:[]};
-
+  var userList = {list:[]};
+  
   return {
     userObject: userObject,
     itemData: itemData,
+    userList: userList,
 
     getuser: function () {
       $http.get('/user').then(function (response) {
@@ -41,12 +43,14 @@ myApp.factory('UserService', function ($http, $location) {
       });
     },
 
+    getUserList: function() {
+      $http.get('/userList').then(function(response){
+        console.log('response is:', response);
+        userList.list = response.data;
+       
+      })
+    }
+
   };
-
-
-
-
-
-
 
 });
