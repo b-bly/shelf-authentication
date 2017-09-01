@@ -39,8 +39,20 @@ router.get('/', function (req, res) {
         } else {
             res.send(data);
             console.log(data);
-        }
-    })
+        };
+    });
+});
 
-})
+router.delete('/:id', function (req, res){
+    Item.findByIdAndRemove({_id: req.params.id}, function(err){
+        if (err) {
+            console.log('delete error', err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(200);
+        };
+    });
+});
+
+
 module.exports = router;

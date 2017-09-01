@@ -10,12 +10,15 @@
                     <th>Placer</th>
                     <th>Description</th>
                     <th>Image</th>
+                    <th>Remove Item</th>
                 </thead>
                 <tbody>
                     <tr ng-repeat="data in sc.itemData.list">
                         <td>{{data.placer}}</td>
                         <td>{{data.description}}</td>
                         <td><img ng-src="{{data.image_url}}" width="200px"></td>
+                        <td><button ng-click="sc.deleteItem(data._id)" class= "btn btn-danger">Delete</button></td>
+
                     </tr>
                 </tbody>
         </div>    
