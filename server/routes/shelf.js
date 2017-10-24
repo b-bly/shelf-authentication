@@ -8,23 +8,19 @@ var Item = require('../models/item.schema.js');
 //this route will add the item that was put on the shelf by the current user
 router.post('/', function (req, res) {
     console.log('hit shelf post route', req.body);
-    //this will make sure that the user adding the item IS authenticated
     if (req.isAuthenticated()) {
         console.log('authenticated user');
-        //the user is active and signed in so the item is saved and added to the DB
-        //adding to the object the name of user who placed item on shelf with .placer
         var itemToSave = new Item(req.body);
-        //adding to the object the name of user who placed the item on shelf using .placer
         itemToSave.placer = req.user.username;
-        itemToSave.save(function (err, data) { //checking to make sure that the item was added to DB
-            if (err) { //item did not get added to the DB
+        itemToSave.save(function (err, data) { 
+            if (err) { 
                 console.log('error saving item:', err);
                 res.sendStatus(500);
-            } else { //item successfull added to DB
+            } else { 
                 res.sendStatus(201);
             }
         });
-    } else { //user not authenticated
+    } else { 
         res.sendStatus(403);
     };
 });

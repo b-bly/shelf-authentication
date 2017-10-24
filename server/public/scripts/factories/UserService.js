@@ -48,7 +48,7 @@ myApp.factory('UserService', function ($http, $location) {
         console.log('response is:', response);
         userList.list = response.data;
        
-      })
+      });
     }
 
   };
